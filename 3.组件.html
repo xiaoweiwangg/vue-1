@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <input @keyup.enter="sub" v-model="todo" type="text" name="" id="">
+      <button @click="sub">添加</button>
+      <ul>
+        <todo-item :item="item" v-for="item in tdlist"></todo-item>
+      </ul>
+    </div>
+    <script>
+      //组件思维->全局组件注册
+      // Vue.component("TodoItem",{
+      //   props:["item"],
+      //   template:`<li> 
+      //               {{ item }} 
+      //             </li>`
+      // })
+      //局部组件
+       TodoItem={
+        props:["item"],
+        template:`<li> 
+                    {{ item }} 
+                  </li>`,
+      }
+    let app=new Vue({
+      el:".app",
+      components:{//局部组件使用
+        TodoItem:TodoItem,
+      },
+      data:{
+        todo:"",
+        tdlist:[]
+      },
+      methods:{
+        sub(){
+          this.tdlist.push(this.todo)
+          this.todo=""
+        }
+      }
+    })
+    </script>
+  </body>
+</html>

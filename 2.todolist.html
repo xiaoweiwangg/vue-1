@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+    *{
+      margin: 0;padding: 0;list-style-type: none;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <input @keyup.enter="sub" v-model="todo" type="text" name="text" id="" />
+      <button @click="sub">提交</button>
+      <ul>
+        <li v-for="(item) in todolist">
+          <input type="checkbox" name="isok" id="">
+          {{ item }}</li>
+      </ul>
+    </div>
+    <script>
+      let app = new Vue({
+        el: ".app",
+        data: {
+          todo:"",
+          isok:false,
+          todolist: ["第一节课内容", "第二节课内容"]
+        },
+        methods:{
+          sub(){
+            this.todolist.push(this.todo)
+            this.todo=""
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

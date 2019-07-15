@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+      tr {
+        width: 50%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <form action="">
+        <table border="1" cellspacing="0" width="50%">
+          <tr>
+            <td>用户名:</td>
+            <td><input v-model="cont" type="text" name="" id="" /></td>
+          </tr>
+          <tr>
+            <td>密码:</td>
+            <td><input type="password" name="" id="" /></td>
+          </tr>
+          <tr>
+            <td>
+              <select v-model.number="vip" name="" id="">
+                <option disabled value="0" checked>选择您要购买的vip</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="reset" value="reset" /></td>
+            <td><input type="submit" value="submit" /></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <script>
+      let app = new Vue({
+        el: ".app",
+        data: {
+          vip: null,
+          cont: "",
+          have: ["admin", "peter"]
+        },
+        watch: {
+          cont: function() {
+            this.have.some(x => {
+              x == this.cont && alert("have");
+            });
+          },
+          vip: function() {
+            switch (this.vip) {
+              case 1:
+              alert  `您选择购买vip1教程!`;
+                break;
+              case 2:
+              alert  `您选择购买vip2教程!`;
+                break;
+              case 3:
+              alert  `您选择购买vip3教程!`;
+                break;
+                case 4:
+              alert  `您选择购买vip4教程!`;
+                break;
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

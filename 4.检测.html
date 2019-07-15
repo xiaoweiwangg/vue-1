@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <textarea maxlength="1000" v-model="conten" @input="count"></textarea>
+      <br />
+      <button @click="check">提交</button>
+      <p>{{ num }}</p>
+    </div>
+    <script>
+      let app = new Vue({
+        el: ".app",
+        data: {
+          conten: "",
+          num: 1000,
+          weijin: ["六合彩", "彩票", "股票", "sex"]
+        },
+        methods: {
+          count(event) {
+            if (event.data === null) {
+              this.num++;
+            } else {
+              this.num--;
+            }
+          },
+          check() {
+            this.weijin.some(x => {
+              this.conten.search(x) != -1 && alert("违禁词" + x);
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
