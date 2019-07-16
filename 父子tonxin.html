@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <zi-zujian :list="list"></zi-zujian>
+      <qj-zujian :list="list"></qj-zujian>
+    </div>
+    <script>
+      Vue.component("qj-zujian", {
+        data: () => {
+          return {
+            quanju: "我是全局组件变量!"
+          };
+        },
+        props: ["list"],
+        template: `
+          <div>{{quanju}}
+            <ul>
+              <li v-for="item in list">
+              {{item}}
+              </li>
+            </ul>
+          </div>
+          `
+      });
+      let vm = new Vue({
+        el: ".app",
+        data: {
+          list: ["html", "css", "javascript", "nodejs", "php", "python"]
+        },
+        components: {
+          "zi-zujian": {
+            data: () => {
+              return {
+                msg: " 学 习 目 录 -> "
+              };
+            },
+            props: ["list"],
+            template: `
+                    <div>
+                      <div>
+                      {{msg}}  
+                      </div>
+                      <ul>
+                        <li v-for="(item,index) in list" :index="index">
+                        {{item}}
+                        </li>
+                      </ul>
+                    </div>
+                      `
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

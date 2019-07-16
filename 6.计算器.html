@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    .app ul{
+      height: 500px;
+      width: 400px;
+      margin: 100px auto;
+      border: 5px solid rebeccapurple;
+    }
+    .xs{
+      height: 100px;
+      background-color: #cff6d9;
+    }
+    .app ul li{
+      line-height: 100px;
+      text-align: center;
+      box-sizing: border-box;
+      height: 100px;
+      width: 100px;
+      border: 1px solid green;
+      float: left;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <ul>
+        <div class="xs">
+
+        </div>
+       <li>1</li>
+       <li>2</li>
+       <li>3</li>
+       <li class="del">del</li>
+       <li>4</li>
+       <li>5</li>
+       <li>6</li>
+       <li>+</li>
+       <li>7</li>
+       <li>8</li>
+       <li>9</li>
+       <li>-</li>
+       <li>0</li>
+       <li>*</li>
+       <li>/</li>
+       <li>=</li>
+      </ul>
+    </div>
+    <script>
+      let app=new Vue({
+        el : ".app",
+        data : {
+
+        }
+      })
+    </script>
+  </body>
+</html>

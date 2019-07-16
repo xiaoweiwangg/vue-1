@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app"> 
+      <first-component></first-component>
+      <jubu-item></jubu-item>
+    </div>
+    <script>
+      //定义全局组件
+      Vue.component(
+        "first-component", 
+        {
+        data: () => {
+          return {
+            msg: "前端课程列表推荐",
+            list:["js","java","python","html","css"]
+          };
+        },
+        template: 
+          `<div>
+            {{msg}}
+            <ul>
+              <li v-for="(item,index) in list">{{item}}{{index}}</li>
+            </ul>
+          </div>`
+      });
+      let vm1 = new Vue({
+        el: ".app",
+        data:{
+          msgf:"hello jubuzujian"
+        },
+        //定义局部组件
+        components:{
+          'jubu-item':{
+            data:()=>{
+              return {
+                msgz:"hello jubu",
+              }
+            },
+            template:"<div>我是局部组件  {{msgz}}</div>"
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
